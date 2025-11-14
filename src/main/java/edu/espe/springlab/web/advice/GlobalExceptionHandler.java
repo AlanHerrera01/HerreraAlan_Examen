@@ -12,6 +12,28 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * MANEJO GLOBAL DE EXCEPCIONES
+ * 
+ * Captura todas las excepciones de la aplicación y devuelve
+ * respuestas JSON estandarizadas al cliente.
+ * 
+ * @ControllerAdvice - Aplica este manejador a todos los controllers
+ * 
+ * EXCEPCIONES MANEJADAS:
+ * - NotFoundException (404) → Recurso no encontrado
+ * - ConflictException (409) → Email duplicado
+ * - MethodArgumentNotValidException (400) → Validaciones fallidas
+ * - Exception (500) → Errores genéricos
+ * 
+ * FORMATO DE RESPUESTA:
+ * {
+ *   "timestamp": "2025-11-14T10:30:00",
+ *   "status": 404,
+ *   "error": "Not Found",
+ *   "message": "Estudiante no encontrado"
+ * }
+ */
 @ControllerAdvice
 public class GlobalExceptionHandler {
 

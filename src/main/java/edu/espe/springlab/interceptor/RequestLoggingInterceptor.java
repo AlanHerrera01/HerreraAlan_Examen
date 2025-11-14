@@ -5,6 +5,27 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+/**
+ * INTERCEPTOR DE LOGGING
+ * 
+ * Registra información de cada petición HTTP:
+ * - Método HTTP (GET, POST, etc.)
+ * - URI solicitada
+ * - Código de respuesta (200, 404, etc.)
+ * - Tiempo de procesamiento en milisegundos
+ * 
+ * CICLO DE VIDA:
+ * 1. preHandle() - Antes de procesar la petición
+ * 2. [Controller procesa la petición]
+ * 3. afterCompletion() - Después de completar la petición
+ * 
+ * CONFIGURACIÓN:
+ * Se registra en WebConfig para interceptar todas las rutas /api/**
+ * 
+ * SALIDA EN CONSOLA:
+ * preHandle -> GET /api/students
+ * afterCompletion -> status = 200 tiempo = 45 ms
+ */
 @Component
 public class RequestLoggingInterceptor implements HandlerInterceptor {
     @Override

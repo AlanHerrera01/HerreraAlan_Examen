@@ -2,6 +2,21 @@ package edu.espe.springlab.dto;
 
 import java.time.LocalDate;
 
+/**
+ * DTO DE SALIDA - Student Response
+ * 
+ * Se usa para DEVOLVER información de un estudiante al cliente.
+ * Incluye todos los campos del estudiante (incluyendo ID y active).
+ * 
+ * PROPÓSITO:
+ * - Ocultar la entidad JPA directa (buena práctica)
+ * - Controlar qué información se expone al cliente
+ * - Facilitar cambios sin afectar la capa de persistencia
+ * 
+ * DIFERENCIA CON StudentRequestData:
+ * - StudentRequestData: Para recibir datos (sin ID)
+ * - StudentResponse: Para enviar datos (con ID y active)
+ */
 public class StudentResponse {
     private Long id;
     private String fullName;

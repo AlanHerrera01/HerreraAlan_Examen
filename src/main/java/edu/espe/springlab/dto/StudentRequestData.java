@@ -4,12 +4,30 @@ import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
+/**
+ * DTO DE ENTRADA - Student Request Data
+ * 
+ * Se usa para recibir datos al CREAR o ACTUALIZAR un estudiante.
+ * Contiene validaciones usando Jakarta Bean Validation.
+ * 
+ * VALIDACIONES:
+ * - fullName: @NotBlank (no vacío), @Size (3-120 caracteres)
+ * - email: @NotBlank, @Email (formato válido), @Size (máx 120)
+ * - birthDate: Sin validaciones (opcional)
+ * 
+ * NOTA: El campo 'active' NO se incluye aquí porque se maneja
+ * automáticamente en el backend (default: true al crear).
+ */
 public class StudentRequestData {
+    // Nombre completo: Requerido, mínimo 3 y máximo 120 caracteres
     @NotBlank @Size(min = 3, max = 120)
     private String fullName;
+    
+    // Email: Requerido, formato email válido, máximo 120 caracteres
     @NotBlank @Email @Size(max = 120)
     private String email;
 
+    // Fecha de nacimiento: Opcional (puede ser null)
     private LocalDate birthDate;
 
     public @NotBlank @Size(min = 3, max = 120) String getFullName() {
